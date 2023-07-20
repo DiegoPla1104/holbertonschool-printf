@@ -23,9 +23,8 @@ int _putchar(char c)
  * Return: String.
  */
 
-char *_itoa(unsigned int n, char a[])
+char *_itoa(long int n, char a[])
 {
-	unsigned int zero = 0;
 	int i = 0, flag = 0, piv, st;
 	char aux, *p;
 
@@ -35,13 +34,13 @@ char *_itoa(unsigned int n, char a[])
 		a[i] = '\0';
 	}
 
-	if (n < zero)
+	if (n < 0)
 	{
 		n = -n;
 		flag = 1;
 	}
 
-	while (n != zero)
+	while (n != 0)
 	{
 		piv = n % 10;
 		a[i++] = piv + '0';

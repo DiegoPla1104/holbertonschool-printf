@@ -10,35 +10,28 @@
  * Return: (0) Success.
  */
 
-int (*get_type(char f))(va_list ap, int c)
+int (*get_type(char f))(va_list ap)
 {
 	ty_f type[] = {
 			{'c', print_char},
 			{'s', print_str},
 			{'d', print_num},
-			{'i', print_num}
+			{'i', print_num},
+			{'%', print_per},
+			{0, per_ch}
 		};
-		int j;
+		int j = 0;
 
-		j = 0;
-		if (j == 0)
+		while (j < 6)
 		{
-			while (j < 4)
+			if (type[j].ty == f || type[j].ty == 0)
 			{
-				if (type[j].ty == f)
-				{
-					break;
-				}
-				j++;
+				break;
 			}
-
-			return (type[j].fn);
+			j++;
 		}
 
-		if (f == '%')
-			_putchar('%');
-
-	return (0);
+		return (type[j].fn);
 }
 
 /**
@@ -48,18 +41,18 @@ int (*get_type(char f))(va_list ap, int c)
  * Return: (0) Success.
  */
 
-int special_case(const char *f)
+int special_case(char f)
 {
-	if (strcmp(f, "\\") == 0)
+	if (f == '\\')
 		_putchar('\\');
-	else if (strcmp(f, "\"") == 0)
+	else if (f == '\"')
 		_putchar('\"');
-	else if (strcmp(f, "\'") == 0)
+	else if (f == '\'')
 		_putchar('\'');
-	else if (strcmp(f, "%") == 0)
+	else if (f == '%')
 		_putchar('%');
-	else if (strcmp(f, "n") == 0)
+	else if (f == 'n')
 		_putchar('\n');
 
-	return (0);
+	return (1);
 }

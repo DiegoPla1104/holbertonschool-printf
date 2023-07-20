@@ -9,36 +9,24 @@
 
 int count_chars(const char *f)
 {
-	int c = 0;
+	int c = 0, i = 0;
 
-	while (*f != '\0')
-	{
-		if (*f == '\\')
-		{
-			f++;
-		}
+	do {
+		if (f[i] == '\\')
+			c += 1;
 
-		if (*f == '\"')
-		{
-			f++;
-		}
+		else if (f[i] == '%' && f[i + 1] != '\0')
+			i += 2;
 
-		if (*f == '%')
-		{
-			f++;
-			if (*f == '%')
-			{
-				c += 1;
-			}
-			else
-				f++;
-		}
+		else if (f[i] == '%')
+			i++;
+
 		else
 		{
-			f++;
 			c += 1;
+			i++;
 		}
-	}
+	} while (f[i] != '\0');
 
 	return (c);
 }

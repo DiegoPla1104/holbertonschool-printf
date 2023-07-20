@@ -7,28 +7,26 @@
 /**
  * print_char - Print char.
  * @ap: va_list.
- * @c: integer.
  *
- * Return: (0).
+ * Return: Nothing.
  */
 
-int print_char(va_list ap, int c)
+int print_char(va_list ap)
 {
-	_putchar(va_arg(ap, int));
+	char ch = va_arg(ap, int);
 
-	c += 1;
-	return (0);
+	write(1, &ch, 1);
+	return (1);
 }
 
 /**
  * print_str - Print Strings.
  * @ap: va_list.
- * @c: integer.
  *
  * Return: Nothing.
  */
 
-int print_str(va_list ap, int c)
+int print_str(va_list ap)
 {
 	char *p;
 
@@ -36,34 +34,61 @@ int print_str(va_list ap, int c)
 
 	if (p == NULL)
 	{
-		write(1, "(nil)", 5);
-		c = c + 5;
-		return (0);
+		write(1, "(null)", 6);
+		return (6);
 	}
+	else
+		write(1, p, strlen(p));
 
-	write(1, p, strlen(p));
-
-	c = c + strlen(p);
-	return (0);
+	return (strlen(p));
 }
 
 /**
  * print_num - Print number.
  * @ap: va_list.
- * @c: integer.
  *
  * Return: Nothing.
  */
 
-int print_num(va_list ap, int c)
+int print_num(va_list ap)
 {
+	int count = 0;
 	char arr[15], *p;
 
-	p = _itoa(va_arg(ap, unsigned int), arr);
+	p = _itoa(va_arg(ap, int), arr);
 
 	write(1, p, strlen(p));
 
-	c = c + strlen(p);
+	count = strlen(p);
+	return (count);
+}
 
-	return (0);
+/**
+ * print_per - Prints %.
+ * @ap: Va_list.
+ *
+ * Return: Nothing.
+ */
+
+int print_per(va_list ap)
+{
+	(void) ap;
+
+	write(1, "%", 1);
+	return (1);
+}
+
+/**
+ * per_ch - Prints %.
+ * @ap: va_list.
+ *
+ * Return: Number of char.
+ */
+
+int per_ch(va_list ap)
+{
+	(void) ap;
+
+	write(1, "%", 1);
+	return (2);
 }
