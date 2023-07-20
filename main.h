@@ -13,11 +13,11 @@ typedef struct ty
 {
 	char ty;
 	int (*fn)(va_list ap);
-}ty_f;
+} ty_f;
 
 int _printf(const char *format, ...);
 
-int count_chars(const char*);
+int count_chars(const char *);
 
 int (*get_type(char f))(va_list ap);
 
