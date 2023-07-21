@@ -1,0 +1,66 @@
+.TH man _printf(3) "20 July 2023" "1.0" "_printf man page"
+
+.SH NAME
+
+	_printf \- Prints the input of the user.
+
+.SH SYNOPSIS
+
+	int _printf(const char *format, ...);
+
+.SH DESCRIPTION
+
+	The function _printf() produces outputs according to a format as described below. The function _printf() writes the output to stdout, the standard output stream.
+
+	This functios writes the output under the control of the format	string that specifies how the following arguments (or arguments	accessed via the variable-length argument facilities of stdarg(3)) are converted for output.
+
+.SH OPTIONS
+
+	The character % is followed by zero or more of the following flags:	c, s, d, and i.
+
+	Flag explanation.
+
+	c
+			Print a char which is passed as an argument (va_list ap) to the stdout.
+
+	s
+			Writes, in stdout, a string from the arguments of (va_list ap).
+
+	d, i
+			The int argument which is given and we convert it to a string and it´s printed.
+
+.SH EXAMPLES
+
+	_printf("Hello %s", "World.");
+
+	$Hello World.
+
+	\-\-\-\-\-\-\-\-\-\-\-\-
+
+	_printf("Hell%c %corld.", 'o', 'W');
+
+	$Hello World.
+
+	\-\-\-\-\-\-\-\-\-\-\-\-
+
+	_printf("He%i%io.", '1', '1');
+
+	$He11o.
+
+	\-\-\-\-\-\-\-\-\-\-\-\-
+
+	_printf("I was born in %d/%d/%d.", 4, 1, 2003);
+
+	&I was born in 4/1/2003.
+
+	\-\-\-\-\-\-\-\-\-\-\-\-
+
+.SH RETURN
+
+	If success _printf() return numbers of chars how by printed and if format is NULL _printf() return -1 and lastly format is empty (_printf("");) return 0.
+
+.SH AUTHOR
+
+	The authors of this man are @FrancoMuVa @Vicky01396 @DiegoPla1104.
+
+
