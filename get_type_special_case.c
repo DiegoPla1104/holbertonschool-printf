@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdarg.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 /**
  * get_type - Select the type, prints the string and counts chars.
@@ -44,15 +45,15 @@ int (*get_type(char f))(va_list ap)
 int special_case(char f)
 {
 	if (f == '\\')
-		_putchar('\\');
+		write(1, "\\", 1);
 	else if (f == '\"')
-		_putchar('\"');
+		write(1, "\"", 1);
 	else if (f == '\'')
-		_putchar('\'');
+		write(1, "\'", 1);
 	else if (f == '%')
-		_putchar('%');
+		write(1, "%", 1);
 	else if (f == 'n')
-		_putchar('\n');
+		write(1, "\n", 1);
 
 	return (1);
 }
