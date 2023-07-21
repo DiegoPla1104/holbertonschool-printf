@@ -1,32 +1,62 @@
-# Printf Proyect
+# _printf Proyect
+***
+The function _printf is used to print a specified type of data in the standar output. Depending o      n the options of format that passed as a argument, the output varies.
 
-The function printf is used to output a specified type of data to the user
+## Synopsis
+```C
+int _printf(const char *format, ...);
+```
 
-Depending on the options that you give, the output varies
+## Options
+***
+The character % is followed by zero or more of the followings flags: c, s, d and i.
+
+### c
+
+Print a char which is pased as an argument (va_list ap) to the stdout.
+
+### s
+
+Writes, in stdout, a string form the arguments of (va_list ap).
+
+### d, i
+
+The integer argument which is given and we convert it to a string and it´s printed.
 
 ## Usage
 
 ```C
-#include <stdio.h>
+# ouputs a string of characters followed by a new line - $Hello World.
 
-# outputs an integer(number) followed by a new line
-printf("%d\n", variable) (another way to output an int is with "%i")
+_printf("Hello %s\n", "World.");
 
-# outputs a character followed by a new line
-printf("%c\n", variable)
+# outputs a character followed by a new line - $Hello World.
 
-# outputs a string of characters followed by a new line
-printf("%s\n", variable)
+_printf("Hel%co World%c", 'l', '.');
+
+# outputs an integer (to output an int can use %d and %i) followed by a new line - $I was born in 4/1/2003.
+
+_printf("I was born in %d/%d/%i%i/\n", '4', '1', '200', '3');
 ```
 
-## What we did
+## Exit values
 
-We made a function that works in similar ways to the printf function
+***
+If success _printf() returns the number of characters to be printed, if format is NULL the function return -1 and lastly format is empty (_printf("");) return 0.
 
-It's called "_printf"
+## Bugs
+```C
+# Incerting a percentage followed by a space and the character 'a' _printf prints - $% a
+_printf("% a");
+# Incerting a percentage followed by a space and the character 'p' _printf prints - $% p
+_printf("% p");
+```
 
-## How does it work
+## Authors
 
-It's usage is the same as the normal printf
+The authors of this proyect are @FrancoMuVa @DiegoPla1104 @Vicky01396.
 
-_printf("text %option text", variable)
+
+
+
+
