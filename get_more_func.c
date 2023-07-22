@@ -137,7 +137,7 @@ int print_octal(va_list ap)
 
 int print_hex(va_list ap)
 {
-	unsigned long int hex_num = va_arg(ap, unsigned long int);
+	long int hex_num = va_arg(ap, long int);
 	int i, start, flag = 0, len = 0, reminder = 0;
 	char aux, buff[30];
 
@@ -185,7 +185,7 @@ int print_hex(va_list ap)
 
 int print_HEX(va_list ap)
 {
-	unsigned long int HEX_num = va_arg(ap, unsigned long int);
+	long int HEX_num = va_arg(ap, long int);
 	int i, start, flag = 0, len = 0, reminder = 0;
 	char aux, buff[30];
 
