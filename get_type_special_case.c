@@ -19,12 +19,16 @@ int (*get_type(char f))(va_list ap)
 			{'d', print_num},
 			{'i', print_num},
 			{'b', convert_bin},
+			{'u', print_uint},
+			{'o', print_octal},
+			{'x', print_hex},
+			{'X', print_HEX},
 			{'%', print_per},
 			{0, per_ch}
 		};
 		int j = 0;
 
-		while (j < 6)
+		while (j < 11)
 		{
 			if (type[j].ty == f || type[j].ty == 0)
 			{

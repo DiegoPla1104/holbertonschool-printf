@@ -33,6 +33,14 @@ int print_num(va_list ap);
 
 int convert_bin(va_list ap);
 
+int print_uint(va_list ap);
+
+int print_octal(va_list ap);
+
+int print_hex(va_list ap);
+
+int print_HEX(va_list ap);
+
 int print_per(va_list ap);
 
 int per_ch(va_list ap);
