@@ -18,6 +18,7 @@ int (*get_type(char f))(va_list ap)
 			{'s', print_str},
 			{'d', print_num},
 			{'i', print_num},
+			{'b', convert_bin},
 			{'%', print_per},
 			{0, per_ch}
 		};
