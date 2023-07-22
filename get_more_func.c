@@ -1,6 +1,5 @@
 #include "main.h"
 #include <unistd.h>
-#include <stdio.h>
 #include <string.h>
 
 /**
@@ -53,7 +52,7 @@ int convert_bin(va_list ap)
 
 int print_uint(va_list ap)
 {
-	unsigned int unsig_num = va_arg(ap, unsigned int);
+	unsigned long int unsig_num = va_arg(ap, unsigned long int);
 	int i, start, reminder = 0, len = 0;
 	char buff[30], aux;
 
@@ -79,7 +78,7 @@ int print_uint(va_list ap)
 		buff[i--] = aux;
 	}
 	write(1, buff, len);
-	return (len - 1);
+	return (len);
 }
 
 /**
@@ -91,7 +90,7 @@ int print_uint(va_list ap)
 
 int print_octal(va_list ap)
 {
-	int octal_num = va_arg(ap, int);
+	long int octal_num = va_arg(ap, long int);
 	int i, start, reminder = 0, flag = 0, len = 0;
 	char buff[40], aux;
 
@@ -138,7 +137,7 @@ int print_octal(va_list ap)
 
 int print_hex(va_list ap)
 {
-	int hex_num = va_arg(ap, int);
+	unsigned long int hex_num = va_arg(ap, unsigned long int);
 	int i, start, flag = 0, len = 0, reminder = 0;
 	char aux, buff[30];
 
@@ -186,7 +185,7 @@ int print_hex(va_list ap)
 
 int print_HEX(va_list ap)
 {
-	int HEX_num = va_arg(ap, int);
+	unsigned long int HEX_num = va_arg(ap, unsigned long int);
 	int i, start, flag = 0, len = 0, reminder = 0;
 	char aux, buff[30];
 
