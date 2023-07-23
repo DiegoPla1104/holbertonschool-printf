@@ -39,6 +39,8 @@ int print_octal(va_list ap);
 
 int print_hex(va_list ap);
 
+int print_S(va_list ap);
+
 int print_HEX(va_list ap);
 
 int print_per(va_list ap);

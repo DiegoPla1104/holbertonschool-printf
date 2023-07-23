@@ -23,12 +23,13 @@ int (*get_type(char f))(va_list ap)
 			{'o', print_octal},
 			{'x', print_hex},
 			{'X', print_HEX},
+			{'S', print_S},
 			{'%', print_per},
 			{0, per_ch}
 		};
 		int j = 0;
 
-		while (j < 11)
+		while (j < 12)
 		{
 			if (type[j].ty == f || type[j].ty == 0)
 			{
