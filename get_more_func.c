@@ -1,6 +1,7 @@
 #include "main.h"
 #include <unistd.h>
 #include <string.h>
+#include <stdio.h>
 
 /**
  * convert_bin - Convets numbers from decimal to binary.
@@ -52,7 +53,7 @@ int convert_bin(va_list ap)
 
 int print_uint(va_list ap)
 {
-	unsigned long int unsig_num = va_arg(ap, unsigned long int);
+	unsigned int unsig_num = va_arg(ap, unsigned int);
 	int i, start, reminder = 0, len = 0;
 	char buff[30], aux;
 
@@ -90,19 +91,14 @@ int print_uint(va_list ap)
 
 int print_octal(va_list ap)
 {
-	long int octal_num = va_arg(ap, long int);
-	int i, start, reminder = 0, flag = 0, len = 0;
+	unsigned int octal_num = va_arg(ap, unsigned int);
+	int i, start, reminder = 0, len = 0;
 	char buff[40], aux;
 
 	if (octal_num == 0)
 	{
 		write(1, "0", 1);
 		return (1);
-	}
-	else if (octal_num < 0)
-	{
-		octal_num = -octal_num;
-		flag = 1;
 	}
 	i = 0;
 	while (octal_num > 0)
@@ -111,10 +107,6 @@ int print_octal(va_list ap)
 		buff[i++] = reminder + '0';
 		octal_num = octal_num / 8;
 	}
-
-	if (flag == 1)
-		buff[i++] = '-';
-
 	start = 0;
 	len = i;
 	i = i - 1;
@@ -137,19 +129,14 @@ int print_octal(va_list ap)
 
 int print_hex(va_list ap)
 {
-	long int hex_num = va_arg(ap, long int);
-	int i, start, flag = 0, len = 0, reminder = 0;
+	unsigned int hex_num = va_arg(ap, unsigned int);
+	int i, start, len = 0, reminder = 0;
 	char aux, buff[30];
 
 	if (hex_num == 0)
 	{
 		write(1, "0", 1);
 		return (1);
-	}
-	else if (hex_num < 0)
-	{
-		hex_num = -hex_num;
-		flag = 1;
 	}
 	i = 0;
 	while (hex_num > 0)
@@ -161,11 +148,9 @@ int print_hex(va_list ap)
 			buff[i++] = (reminder - 10) + 'a';
 		hex_num = hex_num / 16;
 	}
-	if (flag == 1)
-		buff[i++] = '-';
 	start = 0;
 	len = i;
-	i = i - 1;
+	i -= 1;
 	while (start < i)
 	{
 		aux = buff[start];
@@ -185,19 +170,14 @@ int print_hex(va_list ap)
 
 int print_HEX(va_list ap)
 {
-	long int HEX_num = va_arg(ap, long int);
-	int i, start, flag = 0, len = 0, reminder = 0;
-	char aux, buff[30];
+	unsigned int HEX_num = va_arg(ap, unsigned int);
+	int i, start, len = 0, reminder = 0;
+	char aux, buff[35];
 
 	if (HEX_num == 0)
 	{
 		write(1, "0", 1);
 		return (1);
-	}
-	else if (HEX_num < 0)
-	{
-		HEX_num = -HEX_num;
-		flag = 1;
 	}
 	i = 0;
 	while (HEX_num > 0)
@@ -209,11 +189,9 @@ int print_HEX(va_list ap)
 			buff[i++] = (reminder - 10) + 'A';
 		HEX_num = HEX_num / 16;
 	}
-	if (flag == 1)
-		buff[i++] = '-';
 	start = 0;
 	len = i;
-	i = i - 1;
+	i -= 1;
 	while (start < i)
 	{
 		aux = buff[start];
